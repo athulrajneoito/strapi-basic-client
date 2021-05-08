@@ -10,14 +10,11 @@ function App() {
       <Router>
         <div className="mt-5 pt-5">
           <Switch>
-          <Route exact path="/auth">
-              <AuthLayout></AuthLayout>
-            </Route>
+            <Route path="/auth" component={AuthLayout}/>
             <Route exact path="/">
               <Layout></Layout>
             </Route>
-     
-            <Route path="/signup" component={Signup} />
+            {/* <Route path="/signup" component={Signup} /> */}
           </Switch>
         </div>
       </Router>
