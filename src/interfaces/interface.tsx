@@ -1,6 +1,15 @@
 export interface blog {
-  id: number;
+  id?: number;
   title: string;
   content: string;
-  featureImage:object|any
+  featureImage?:object|any
+}
+export interface createBlog {
+  handleClose:()=>{},
+  show:boolean
+}
+
+export interface User {
+  jwt:string,
+  user:object
 }

@@ -15,3 +15,6 @@ code {
   height: 40vh;
   width: 100%;
 }
+.card-blog-image{
+  max-height: 150px;
+}

@@ -11,10 +11,7 @@ function App() {
         <div className="mt-5 pt-5">
           <Switch>
             <Route path="/auth" component={AuthLayout}/>
-            <Route exact path="/">
-              <Layout></Layout>
-            </Route>
-            {/* <Route path="/signup" component={Signup} /> */}
+            <Route path="/" component = {Layout} />
           </Switch>
         </div>
       </Router>

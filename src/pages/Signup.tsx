@@ -1,6 +1,10 @@
 import React from "react";
 
 const Signup = () => {
+
+  const redirect =  ()=>{
+    window.location.href =  "http://localhost:1337/connect/google";
+  }
   return (
     <form>
       <div className="mb-3">
@@ -24,7 +28,9 @@ const Signup = () => {
           id="exampleInputPassword1"
         ></input>
       </div>
-
+      <div onClick={()=>redirect()}>
+        Google Login
+      </div>
       <button type="submit" className="btn btn-primary">
         Submit
       </button>

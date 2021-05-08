@@ -1,5 +1,4 @@
-import React from "react";
-import { blog as blogInteface } from "../interfaces/interface";
+
 import { useHistory } from "react-router-dom";
 import config from "../config";
 const BlogItem = ({ blog }: any) => {
@@ -15,8 +14,8 @@ const BlogItem = ({ blog }: any) => {
     <div className=" col-md-3 col-6 p-2">
       <div className="card" onClick={() => goToBLog()}>
         <img
-          src={config.basuUrl + blog.featureImage.url}
-          className="card-img-top"
+          src={config.basuUrl + blog.featureImage?.url}
+          className="card-img-top card-blog-image"
           alt="blogImage"
         ></img>
         <div className="card-body">
