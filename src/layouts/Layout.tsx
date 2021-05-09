@@ -6,7 +6,7 @@ import BlogPage from "../components/BlogPage";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="mt-5 pt-5">
       <Router>
         <Header />
         <Switch>

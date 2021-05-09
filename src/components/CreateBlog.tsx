@@ -32,7 +32,7 @@ const CreateBlog = ({ handleClose, show }: createBlogInterace) => {
   const submitForm = async (event: FormEvent) => {
     event.preventDefault();
         // @ts-ignore
-    const data:blog = {title:formData.title,content:formData.content} ;
+    const data:blog = {title:formData?.title,content:formData.content} ;
 
     const payload = new FormData();
     if(formData.featureImage){
