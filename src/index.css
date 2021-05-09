@@ -16,5 +16,6 @@ code {
   width: 100%;
 }
 .card-blog-image{
+  height: 150px;
   max-height: 150px;
 }

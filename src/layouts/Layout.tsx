@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/Header";
 import BlogList from "../components/BlogList";
 import Home from "../components/Home";
 import BlogPage from "../components/BlogPage";
+import {withRouter} from 'react-router';
 
 const Layout = () => {
   return (
     <div className="mt-5 pt-5">
-      <Router>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/blogs" component={BlogList} />
-          <Route exact path="/blogs/:id" component={BlogPage} />
+          <Route  path="/blogs/:id" component={BlogPage} />
+          <Route  path="/blogs" component={BlogList} />
+          <Route  path="/" component={Home} />
         </Switch>
-      </Router>
     </div>
   );
 };
 
-export default Layout;
+export default withRouter(Layout);

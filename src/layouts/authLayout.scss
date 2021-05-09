@@ -1,4 +1,11 @@
-.layout-container{
+.layout-container {
     height: 100vh;
     align-items: center;
+    position: relative;
+    .back-btn {
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        width: max-content;
+    }
 }

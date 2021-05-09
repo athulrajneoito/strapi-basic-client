@@ -41,4 +41,4 @@ function GoogleAuthCallback() {
   );
 }
 
-export default withRouter(GoogleAuthCallback);
+export default GoogleAuthCallback;

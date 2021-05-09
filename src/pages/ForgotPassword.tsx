@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
 import { sendForgotPasswordMail } from "../service/auth";
 
 export const ForgotPassword = () => {
@@ -11,6 +12,9 @@ export const ForgotPassword = () => {
   const submitForm = async (event: FormEvent) => {
     event.preventDefault();
     const res = await sendForgotPasswordMail(email);
+    if (res) {
+      toast.success(" Successfully send mail");
+    } else toast.error( "Error Occured");
     console.log(res);
 
   };

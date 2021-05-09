@@ -1,6 +1,7 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { setItem } from "../helpers/localStorage";
 import { LoginUser } from "../service/auth";
 
@@ -10,33 +11,36 @@ const SignIn = () => {
     password: "",
   });
 
-  const history  =useHistory();
-    /**
+  const history = useHistory();
+  /**
    * Function to update state for forms
    * @param value field value
    * @param field field name
    */
-     const updateForm = (value: any, field: string) => {
+  const updateForm = (value: any, field: string) => {
+    let newValue: any = { ...formData };
+    newValue[field] = value;
+    setFormData(newValue);
+  };
 
-      let newValue: any = { ...formData };
-      newValue[field] = value;
-      setFormData(newValue);
-    };
-    /**
-     * Function to submit Form
-     * @param event mouse click event
-     */
-    const submitForm = async (event: FormEvent) => {
-      event.preventDefault();
-      const newUser = await LoginUser(formData);
-      console.log(newUser);
-      if(newUser){
-          setItem('user',newUser?.data);
-          // history.push('/blogs')
-        }
-
-
-    };
+  const redirect = () => {
+    window.location.href = "http://localhost:1337/connect/google";
+    
+  };
+  /**
+   * Function to submit Form
+   * @param event mouse click event
+   */
+  const submitForm = async (event: FormEvent) => {
+    event.preventDefault();
+    const newUser = await LoginUser(formData);
+    console.log(newUser);
+    if (newUser) {
+      setItem("user", newUser?.data);
+      toast.success("Login Successfully");
+      // history.push('/blogs')
+    } else toast.error("Login Error");
+  };
   return (
     <div>
       <form onSubmit={(e: FormEvent) => submitForm(e)}>
@@ -72,13 +76,18 @@ const SignIn = () => {
             }
           ></input>
         </div>
-        <p>Forgot Password?</p>
+        <div className="my-2">
+
+        <Link  to="/auth/forgotpassword">Forgot Password?</Link>
+        </div>
         <button type="submit" className="btn btn-primary w-100">
           Login
         </button>
-
+        <div className="btn btn-success mt-2 w-100" onClick={() => redirect()}>
+          Google Login
+        </div>
         <div className="my-3">
-        <Link to="/auth/signup">Dont have an account</Link>
+          <Link to="/auth/signup">Dont have an account</Link>
         </div>
       </form>
     </div>

@@ -1,19 +1,22 @@
 import "./App.css";
 import Layout from "./layouts/Layout";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AuthLayout } from "./layouts/AuthLayout";
+import {withRouter} from 'react-router';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import  AuthLayout  from "./layouts/AuthLayout";
+import Toast from "./components/Toast";
 
 function App() {
   return (
     <div>
-      <Router>
+      <Toast />
+      <BrowserRouter>
         <div className="">
           <Switch>
-            <Route path="/auth" component={AuthLayout}/>
-            <Route path="/" component = {Layout} />
+            <Route path="/auth" component={AuthLayout} />
+            <Route path="/" component={Layout} />
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

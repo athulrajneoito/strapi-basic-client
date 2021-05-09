@@ -1,8 +1,10 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
+import { toast } from "react-toastify";
 import { resetPassword } from "../service/auth";
 
 const ResetPassword = () => {
+  const history = useHistory();
   const location = useLocation();
   const [formData, setFormData] = useState({
     code: "",
@@ -38,9 +40,13 @@ const ResetPassword = () => {
    */
   const submitForm = async (event: FormEvent) => {
     event.preventDefault();
-    const payload = {...formData,code}
+    const payload = { ...formData, code };
     const newPassword = await resetPassword(payload);
     console.log(newPassword);
+    if (newPassword) {
+      toast.success("Registered Successfully");
+      history.push("/auth/signin");
+    } else toast.error("Error Occured");
   };
   return (
     <div>

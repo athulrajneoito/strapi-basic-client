@@ -1,9 +1,11 @@
 import React, { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import {} from "../interfaces/interface";
 import { createUser } from "../service/auth";
 
 const Signup = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -32,6 +34,11 @@ const Signup = () => {
     const newUser = await createUser(formData);
     // setItem('user',newUser?.data)
     console.log(newUser);
+    if (newUser) {
+
+      toast.success("Registered Successfully");
+      history.push('/auth/signin')
+    } else toast.error( "Error Occured");
   };
   return (
     <form autoComplete="off" onSubmit={(e: FormEvent) => submitForm(e)}>
